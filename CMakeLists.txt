@@ -1,9 +1,10 @@
-if(APPLE)
-  cmake_minimum_required(VERSION 2.8.11 FATAL_ERROR)
-else()
-  cmake_minimum_required(VERSION 2.8.7 FATAL_ERROR)
-endif()
+cmake_minimum_required(VERSION 3.3)
 
-add_library(boost_predef INTERFACE GLOBAL)
+project(boost_predef)
 
-target_include_directories(boost_predef BEFORE PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_library(boost_predef INTERFACE)
+
+target_include_directories(boost_predef BEFORE INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+install(TARGETS boost_predef DESTINATION lib)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/boost DESTINATION include)
